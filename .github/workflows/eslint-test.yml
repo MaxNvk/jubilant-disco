@@ -14,10 +14,11 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12
-        
-    - name: npm install, and lint
-      run: |
-        npm ci
-        npm lint
+    # Install Dependencies
+    - name: npm install
+      run: npm ci
+    # Lint
+    - name: lint
+      run: npm lint
       env:
         CI: true
