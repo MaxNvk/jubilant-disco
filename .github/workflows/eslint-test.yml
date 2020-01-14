@@ -1,4 +1,4 @@
-name: Node CI
+name: Linter
 
 on: [push, pull_request]
 
@@ -7,16 +7,14 @@ jobs:
     name: Run ESLint
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
+    # Check out the repository
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    # Install Node.js
+    - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12
+        
     - name: npm install, and lint
       run: |
         npm ci
