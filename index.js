@@ -15,9 +15,9 @@ async function run() {
   await page.goto('https://stackoverflow.com/users/login')
 
   await page.waitForSelector('input#email')
-  await page.type('input#email', 'max.vashuk@gmail.com')
+  await page.type('input#email', '')
   await page.waitForSelector('input#password')
-  await page.type('input#password', 'a06580A')
+  await page.type('input#password', '')
 
   // await navigationPromise;
 
