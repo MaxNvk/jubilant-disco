@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const CronJob = require('cron').CronJob
 
 async function run() {
   const browser = await puppeteer.launch()
@@ -14,15 +15,15 @@ async function run() {
   await page.goto('https://stackoverflow.com/users/login')
 
   await page.waitForSelector('input#email')
-  await page.type('input#email', '')
+  await page.type('input#email', 'max.vashuk@gmail.com')
   await page.waitForSelector('input#password')
-  await page.type('input#password', '')
+  await page.type('input#password', 'a06580A')
 
   // await navigationPromise;
 
   await Promise.all([
     page.keyboard.press('Enter'),
-    page.waitForNavigation({ waitUntil: 'networkidle0' }),
+    page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 10000 }),
   ])
 
   await page.screenshot({ path: `img/${new Date()}.png` })
@@ -30,4 +31,13 @@ async function run() {
   await browser.close()
 }
 
-run()
+// run()
+
+const task = new CronJob({
+  cronTime: '40 * * * * *',
+  onTick: run,
+  start: false,
+  timeZone: 'Europe/London',
+})
+
+task.start()

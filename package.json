@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "cron": "^1.7.2",
     "puppeteer": "^2.0.0"
   },
   "devDependencies": {
