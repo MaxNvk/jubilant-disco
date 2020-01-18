@@ -1,5 +1,8 @@
 const puppeteer = require('puppeteer')
 const CronJob = require('cron').CronJob
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 async function run() {
   const browser = await puppeteer.launch()
@@ -15,9 +18,9 @@ async function run() {
   await page.goto('https://stackoverflow.com/users/login')
 
   await page.waitForSelector('input#email')
-  await page.type('input#email', 'max.vashuk@gmail.com')
+  await page.type('input#email', process.env.EMAIL)
   await page.waitForSelector('input#password')
-  await page.type('input#password', 'a06580A')
+  await page.type('input#password', process.env.PASS)
 
   // await navigationPromise;
 
@@ -34,7 +37,7 @@ async function run() {
 // run()
 
 const task = new CronJob({
-  cronTime: '40 * * * * *',
+  cronTime: '* * 0 * * *',
   onTick: run,
   start: false,
   timeZone: 'Europe/London',

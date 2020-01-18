@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "cron": "^1.7.2",
+    "dotenv": "^8.2.0",
     "puppeteer": "^2.0.0"
   },
   "devDependencies": {
@@ -16,7 +17,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint **/*.js",
-    "start-dev": "nodemon --exec 'npm run lint && node index'"
+    "start-dev": "nodemon --exec 'npm run lint && node index'",
+    "start": "node index"
   },
   "repository": {
     "type": "git",
