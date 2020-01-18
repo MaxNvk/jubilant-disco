@@ -21,7 +21,6 @@ async function run() {
   await page.type('input#email', process.env.EMAIL)
   await page.waitForSelector('input#password')
   await page.type('input#password', process.env.PASS)
-  
 
   // await navigationPromise;
 
