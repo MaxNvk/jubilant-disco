@@ -22,8 +22,6 @@ async function run() {
   await page.waitForSelector('input#password')
   await page.type('input#password', process.env.PASS)
 
-  // await navigationPromise;
-
   await Promise.all([
     page.keyboard.press('Enter'),
     page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 10000 }),
